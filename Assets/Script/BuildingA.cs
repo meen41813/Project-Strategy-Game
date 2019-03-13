@@ -22,7 +22,13 @@ public class BuildingA : MonoBehaviour
         buildOn = true;
         if (buildOn)
         {
-            CameraManage cameraScript = GameObject.Find("Main Camera").GetComponent<CameraManage>();
+            
+           
+            //Debug.Log("buildOn = " + buildOn);
+            
+            //Debug.Log(cameraScript.pos);
+            
+            
             
         }
 

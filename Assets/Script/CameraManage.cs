@@ -11,7 +11,7 @@ public class CameraManage : MonoBehaviour
     public float scrollSpeed = 5f;
     public float zoomIn = 10f;
     public float zoomOut = 20f;
-
+    public Vector3 pos;
 
     public GameObject UI;
 
@@ -52,28 +52,31 @@ public class CameraManage : MonoBehaviour
         pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
         transform.position = pos;
     }
-    private void selectObject()
+    public void selectObject()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
             RaycastHit hitInfo ;
             if (Physics.Raycast(ray,out hitInfo))
             {
-                if(hitInfo.transform.tag == "Unit" )
-                {       
+                if (hitInfo.transform.tag == "Unit")
+                {
                     UnitManage unit = hitInfo.transform.GetComponent<UnitManage>();
                     selected = hitInfo.transform.gameObject;
                     UI.gameObject.SetActive(true);
                     //unit.nameText.text = "Name: " + unit.name;
                     //unit.HPText.text = "HP: " + unit.currentHP + "/" + unit.maxHP;
-                }
-                else if (hitInfo.transform.tag == "UI")
+                }             
+                else if(hitInfo.transform.tag == "Ground")
                 {
-                    UI.gameObject.SetActive(true);
+                    pos = hitInfo.point;
+                    //Debug.Log(pos);
+                    
+
                 }
-                
+
             }
 
         }
