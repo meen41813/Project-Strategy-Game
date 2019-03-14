@@ -19,6 +19,7 @@ public class SpawnManage : MonoBehaviour
     {
         BuildingA build = buildBT.GetComponent<BuildingA>();
         CameraManage cam = camera.GetComponent<CameraManage>();
+        
         if(Input.GetMouseButtonDown(0) && build.buildOn == true)
         {
             Debug.Log(cam.pos);
